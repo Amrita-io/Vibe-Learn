@@ -1,0 +1,115 @@
+{
+  "name": "vibe-learn",
+  "displayName": "Vibe Learn",
+  "description": "Gamified codebase understanding for vibe coders",
+  "version": "0.0.1",
+  "publisher": "vibe-learn",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Education",
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vibe-learn-sidebar-container",
+          "title": "Vibe Learn",
+          "icon": "media/vibe-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "vibe-learn-sidebar-container": [
+        {
+          "type": "webview",
+          "id": "vibe-learn.dashboardView",
+          "name": "Vibe Learn",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vibe-learn.analyze",
+        "title": "Vibe Learn: Analyze Workspace"
+      },
+      {
+        "command": "vibe-learn.startMission",
+        "title": "Vibe Learn: Start Next Mission"
+      },
+      {
+        "command": "vibe-learn.explainFile",
+        "title": "Vibe Learn: Explain File Architecture"
+      },
+      {
+        "command": "vibe-learn.explainFunction",
+        "title": "Vibe Learn: Map Function Connections"
+      },
+      {
+        "command": "vibe-learn.exportReport",
+        "title": "Vibe Learn: Export Understanding Report"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "vibe-learn.explainFile",
+          "group": "vibe-learn-group@1"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "vibe-learn.explainFunction",
+          "when": "editorHasSelection",
+          "group": "vibe-learn-group@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Vibe Learn",
+      "properties": {
+        "vibe-learn.preferredModel": {
+          "type": "string",
+          "default": "gemini-1.5-flash",
+          "description": "Preferred Gemini Model for code analysis"
+        },
+        "vibe-learn.backendPort": {
+          "type": "integer",
+          "default": 8000,
+          "description": "Port of the Vibe Learn backend FastAPI server"
+        },
+        "vibe-learn.autoAnalyzeOnOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically run codebase structure analysis upon opening workspace"
+        },
+        "vibe-learn.dailyGoal": {
+          "type": "integer",
+          "default": 3,
+          "description": "Daily goal of completed missions to maintain the streak"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "pretest": "npm run compile && npm run lint",
+    "compile-webview": "cd webview-ui && npm run build",
+    "build-all": "npm run compile-webview && npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.34",
+    "@types/vscode": "^1.80.0",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.1.3",
+    "webpack": "^5.86.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
