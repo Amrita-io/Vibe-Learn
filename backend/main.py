@@ -67,7 +67,7 @@ def analyze_codebase(req: AnalyzeRequest):
     if not os.path.exists(req.workspace_path):
         raise HTTPException(status_code=404, detail="Workspace path does not exist on local disk.")
     
-    api_key = os.getenv("AIzaSyDECUK-FuVETmjf4mm1duQVO7FkP_r86PE")
+    api_key = os.getenv(GEMINI_API_KEY)
     
     try:
         # 1. Run Architecture analysis (which gives the base features and component map)
