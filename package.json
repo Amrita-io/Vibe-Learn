@@ -92,6 +92,11 @@
           "type": "integer",
           "default": 3,
           "description": "Daily goal of completed missions to maintain the streak"
+        },
+        "vibe-learn.playerState": {
+          "type": "object",
+          "default": null,
+          "description": "Internal state of player progress, missions, and concepts"
         }
       }
     }

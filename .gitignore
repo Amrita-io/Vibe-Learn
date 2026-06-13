@@ -1,0 +1,29 @@
+# Node / JS / Extension
+node_modules/
+out/
+dist/
+webview-ui/dist/
+webview-ui/node_modules/
+.eslintcache
+*.log
+
+# Python / FastAPI
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+venv/
+.venv/
+env/
+.env
+backend/.env
+*.env
+
+# Local Game States / Progress
+.vibe-learn/
+backend/.vibe-learn/
+vibe-learn-report.md
+
+# OS files
+.DS_Store
+Thumbs.db
